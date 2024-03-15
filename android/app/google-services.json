@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "846393151203",
+    "project_id": "fyp-decoders",
+    "storage_bucket": "fyp-decoders.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:846393151203:android:5a85c28f1af87f7cee7fd6",
+        "android_client_info": {
+          "package_name": "com.example.decoders"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnD1tiIzWALP56ZkO0wIWj3nLeEoVukWY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
