@@ -199,33 +199,45 @@ class _RegistrationViewState extends State<RegistrationView> {
                               ),
                               ElevatedButton(
                                 style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all<Color>(
-                                      Color(0xFF003366)),
-                                  padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                                  backgroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          Color(0xFF003366)),
+                                  padding: MaterialStateProperty.all<
+                                      EdgeInsetsGeometry>(
                                     EdgeInsets.symmetric(
                                         horizontal: 80, vertical: 15),
                                   ),
-                                  textStyle: MaterialStateProperty.all<TextStyle>(
+                                  textStyle:
+                                      MaterialStateProperty.all<TextStyle>(
                                     TextStyle(fontSize: 16),
                                   ),
                                 ),
                                 onPressed: () async {
                                   if (_formKey.currentState!.validate()) {
                                     try {
-                                      UserCredential userCredentials = await _auth.createUserWithEmailAndPassword(
+                                      UserCredential userCredentials =
+                                          await _auth
+                                              .createUserWithEmailAndPassword(
                                         email: _emailController.text.trim(),
-                                        password: _passwordController.text.trim(),
+                                        password:
+                                            _passwordController.text.trim(),
                                       );
                                       // Save other info in firestore
-                                      FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-                                      await firebaseFirestore.collection('users').doc(userCredentials.user!.uid).set({
+                                      FirebaseFirestore firebaseFirestore =
+                                          FirebaseFirestore.instance;
+                                      await firebaseFirestore
+                                          .collection('users')
+                                          .doc(userCredentials.user!.uid)
+                                          .set({
                                         'name': _nameController.text.trim(),
                                         'mobile': _mobileController.text.trim(),
                                         'email': _emailController.text.trim(),
-                                        'created on': DateTime.now().microsecondsSinceEpoch,
+                                        'created on': DateTime.now()
+                                            .microsecondsSinceEpoch,
                                         'photo': null,
                                       });
-                                      Utils().mySnackBar('Register Successful', "Credentials Match");
+                                      Utils().mySnackBar('Register Successful',
+                                          "Credentials Match");
                                     } catch (e) {
                                       Utils().mySnackBar("Error", e.toString());
                                     }

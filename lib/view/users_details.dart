@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class UserDetailsScreen extends StatefulWidget {
   const UserDetailsScreen({super.key});
 
@@ -7,6 +8,18 @@ class UserDetailsScreen extends StatefulWidget {
 }
 
 class _UserDetailsScreenState extends State<UserDetailsScreen> {
+  final _formKey = GlobalKey<FormState>();
+  final _emailController = TextEditingController();
+  final _nameController = TextEditingController();
+  final _userTitleController = TextEditingController();
+  final phoneController = TextEditingController();
+  final urlController = TextEditingController();
+  final descriptionController = TextEditingController();
+  final cvController = TextEditingController();
+  final groupMembersController = TextEditingController();
+  final linkedinUrlController = TextEditingController();
+  final screenshotsController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,56 +41,149 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
                   ),
                 ],
               ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  TextField(
-                    decoration: InputDecoration(labelText: 'Name'),
-                  ),
-                  SizedBox(height: 10),
-                  TextField(
-                    decoration: InputDecoration(labelText: 'Email'),
-                  ),
-                  SizedBox(height: 10),
-                  TextField(
-                    decoration: InputDecoration(labelText: 'Phone No'),
-                  ),
-                  SizedBox(height: 10),
-                  TextField(
-                    decoration: InputDecoration(labelText: 'CV'),
-                  ),
-                  SizedBox(height: 10),
-                  TextField(
-                    decoration: InputDecoration(labelText: 'Description'),
-                  ),
-                  SizedBox(height: 10),
-                  TextField(
-                    decoration: InputDecoration(labelText: 'Group By'),
-                  ),
-                  SizedBox(height: 10),
-                  TextField(
-                    decoration: InputDecoration(labelText: 'LinkedIn'),
-                  ),
-                  SizedBox(height: 10),
-                  TextField(
-                    decoration: InputDecoration(labelText: 'Screenshots'),
-                  ),
-                  SizedBox(height: 20),
-                  ElevatedButton(
-                    onPressed: () {
-                      // Add your submit button logic here
-                      Navigator.of(context).pop(); // Close the dialog
-                    },
-                    child: Text(
-                      'Submit',
-                      style: TextStyle(color: Colors.white),
+              child: Form(
+                key: _formKey,
+
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    TextFormField(
+                      decoration: InputDecoration(labelText: 'Name'),
+                      controller: _nameController,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Enter Name here';
+                        }
+                        return null;
+                      },
                     ),
-                    style: ButtonStyle(
-                      backgroundColor:
-                      MaterialStateProperty.all<Color>(Color(0xFF003366)),
+                    SizedBox(height: 10),
+                    TextFormField(
+                      decoration: InputDecoration(labelText: 'User Title'),
+                      controller: _userTitleController,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Enter Title here';
+                        }
+                        return null;
+                      },
                     ),
-                  ),
-                ],
+                    SizedBox(height: 10),
+                    TextFormField(
+                      decoration: InputDecoration(labelText: 'Email'),
+                      controller: _emailController,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Enter Email here';
+                        }
+                        return null;
+                      },
+                    ),
+                    SizedBox(height: 10),
+                    TextFormField(
+                      decoration: InputDecoration(labelText: 'Phone No'),
+                      controller: phoneController,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Enter Phone no here';
+                        }
+                        return null;
+                      },
+                    ),
+                    SizedBox(height: 10),
+                    TextFormField(
+                      decoration: InputDecoration(labelText: 'Project URL'),
+                      controller: urlController,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Enter Project URL here';
+                        }
+                        return null;
+                      },
+                    ),
+                    SizedBox(height: 10),
+                    TextFormField(
+                      decoration: InputDecoration(labelText: 'Project Description'),
+                      controller: descriptionController,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Enter Description here';
+                        }
+                        return null;
+                      },
+                    ),
+                    SizedBox(height: 10),
+                    TextFormField(
+                      decoration: InputDecoration(labelText: 'CV'),
+                      controller: _nameController,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Upload CV';
+                        }
+                        return null;
+                      },
+                    ),
+                    SizedBox(height: 10),
+                    TextFormField(
+                      decoration: InputDecoration(labelText: 'Name'),
+                      controller: _nameController,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Enter Name here';
+                        }
+                        return null;
+                      },
+                    ),
+                    SizedBox(height: 10),
+                    TextFormField(
+                      decoration: InputDecoration(labelText: 'Group Members'),
+                      controller: groupMembersController,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Enter Members name';
+                        }
+                        return null;
+                      },
+                    ),
+                    SizedBox(height: 10),
+                    TextFormField(
+                      decoration: InputDecoration(labelText: 'Linkedin'),
+                      controller: linkedinUrlController,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Enter Linkedin URL here';
+                        }
+                        return null;
+                      },
+                    ),
+                    SizedBox(height: 20,),
+                    TextFormField(
+                      decoration: InputDecoration(labelText: 'Screenshots'),
+                      controller: screenshotsController,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Enter Project Screenshots here';
+                        }
+                        return null;
+                      },
+                    ),
+                    SizedBox(height: 20),
+                    ElevatedButton(
+                      onPressed: () {
+                        // Add your submit button logic here
+                        Navigator.of(context).pop(); // Close the dialog
+                      },
+                      child: Text(
+                        'Submit',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(Color(0xFF003366)),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
