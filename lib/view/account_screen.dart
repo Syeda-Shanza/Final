@@ -88,12 +88,14 @@ class _AccountScreenState extends State<AccountScreen> {
                 child: Stack(
                   children: [
                     CircleAvatar(
-                        radius: 100,
-                        backgroundImage: showLocalImage
-                            ? FileImage(choosenImage!)
-                            : (userSnapshot!['photo'] == null
-                            ? null
-                            : NetworkImage(userSnapshot!['photo']!))),
+                      radius: 100,
+                      backgroundImage: NetworkImage(''),
+                      // backgroundImage: showLocalImage
+                      //     ? FileImage(choosenImage!)
+                      //     : (userSnapshot!['photo'] == null
+                      //     ? null
+                      //     : NetworkImage(userSnapshot!['photo']!))
+                    ),
                     Positioned(
                       right: -20,
                       bottom: -20,
@@ -128,13 +130,6 @@ class _AccountScreenState extends State<AccountScreen> {
                                 );
                               },
                             );
-                            firebase_storage.Reference ref =
-                            firebase_storage.FirebaseStorage.instance.ref(
-                                '/App-Development' + '123');
-                            firebase_storage.UploadTask uploadTask =
-                            ref.putFile(choosenImage!);
-                            await Future.value(uploadTask);
-                            var url = ref.getDownloadURL();
                           },
                           icon: Icon(
                             Icons.camera_alt,
@@ -175,8 +170,7 @@ class _AccountScreenState extends State<AccountScreen> {
                                     style: TextStyle(color: Colors.white)),
                                 subtitle: Text('${userSnapshot['mobile']}',
                                     style: TextStyle(color: Colors.white)),
-                                leading: Icon(Icons.phone,
-                                    color: Colors.white),
+                                leading: Icon(Icons.phone, color: Colors.white),
                               ),
                               ListTile(
                                 tileColor: Colors.white,
@@ -184,8 +178,7 @@ class _AccountScreenState extends State<AccountScreen> {
                                     style: TextStyle(color: Colors.white)),
                                 subtitle: Text('${userSnapshot['email']}',
                                     style: TextStyle(color: Colors.white)),
-                                leading: Icon(Icons.mail,
-                                    color: Colors.white),
+                                leading: Icon(Icons.mail, color: Colors.white),
                               ),
                               ListTile(
                                 tileColor: Colors.white,
@@ -193,8 +186,7 @@ class _AccountScreenState extends State<AccountScreen> {
                                     style: TextStyle(color: Colors.white)),
                                 subtitle: Text('Kainat Batool,Shanza Batool',
                                     style: TextStyle(color: Colors.white)),
-                                leading: Icon(Icons.group,
-                                    color: Colors.white),
+                                leading: Icon(Icons.group, color: Colors.white),
                               ),
                               ListTile(
                                 tileColor: Colors.white,
@@ -202,8 +194,7 @@ class _AccountScreenState extends State<AccountScreen> {
                                     style: TextStyle(color: Colors.white)),
                                 subtitle: Text('Github Link',
                                     style: TextStyle(color: Colors.white)),
-                                leading: Icon(Icons.link,
-                                    color: Colors.white),
+                                leading: Icon(Icons.link, color: Colors.white),
                               ),
                               ListTile(
                                 tileColor: Colors.white,
@@ -211,8 +202,7 @@ class _AccountScreenState extends State<AccountScreen> {
                                     style: TextStyle(color: Colors.white)),
                                 subtitle: Text('Sample pics',
                                     style: TextStyle(color: Colors.white)),
-                                leading: Icon(Icons.photo,
-                                    color: Colors.white),
+                                leading: Icon(Icons.photo, color: Colors.white),
                               ),
                               ListTile(
                                 tileColor: Colors.white,
@@ -246,14 +236,12 @@ class _AccountScreenState extends State<AccountScreen> {
                                           TextButton(
                                               onPressed: () {
                                                 Navigator.pop(context);
-                                                FirebaseAuth
-                                                    .instance
-                                                    .signOut();
+                                                FirebaseAuth.instance.signOut();
                                                 Navigator.of(context)
                                                     .pushReplacement(
-                                                    MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            LoginView()));
+                                                        MaterialPageRoute(
+                                                            builder: (context) =>
+                                                                LoginView()));
                                               },
                                               child: Text('Yes')),
                                         ],
@@ -266,8 +254,8 @@ class _AccountScreenState extends State<AccountScreen> {
                                     style: TextStyle(color: Colors.white)),
                                 subtitle: Text('↪',
                                     style: TextStyle(color: Colors.white)),
-                                leading: Icon(Icons.logout,
-                                    color: Colors.white),
+                                leading:
+                                    Icon(Icons.logout, color: Colors.white),
                               ),
                             ],
                           ),
@@ -280,6 +268,7 @@ class _AccountScreenState extends State<AccountScreen> {
             ],
           );
         },
-      );
-    ),}
+      ),
+    );
+  }
 }
