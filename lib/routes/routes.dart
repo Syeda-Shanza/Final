@@ -3,6 +3,8 @@ import 'package:decoders/view/add_screen/add_view.dart';
 import 'package:decoders/view/email_verification.dart';
 import 'package:decoders/view/home_view.dart';
 import 'package:decoders/view/auth/login_view.dart';
+import 'package:decoders/view/otp_screen.dart';
+import 'package:decoders/view/phone_auth.dart';
 import 'package:decoders/view/profile.dart';
 import 'package:decoders/view/registration_view.dart';
 import 'package:decoders/view/splash_screen.dart';
@@ -26,7 +28,7 @@ class AppRoutes {
         ),
         GetPage(
           name: RouteName.splashView,
-          page: () =>  AccountScreen(),
+          page: () =>  PhoneAuth(),
         ),
         GetPage(
           name: RouteName.homeView,
